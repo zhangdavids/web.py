@@ -1,6 +1,7 @@
 import web
 
 render=web.template.render('templates/')
+db=web.database(dbn='sqlite',db='MovieSite.db')
 
 urls=(
 	'/','index'
@@ -20,6 +21,7 @@ movies=[
 class index:
     def GET(self):
         
+        movies=db.select('movie')
         return render.index(movies)
 
 
